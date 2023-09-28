@@ -47,6 +47,7 @@ class HieghtScreen extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.pop(context);
+                        cubit.setHeight(0);
                       },
                       child: Row(
                         children: [

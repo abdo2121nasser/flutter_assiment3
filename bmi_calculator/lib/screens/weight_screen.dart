@@ -1,8 +1,7 @@
 import 'package:bmi_calculator/blocs/bmi_calculator_cubit.dart';
-import 'package:bmi_calculator/blocs/bmi_calculator_cubit.dart';
+import 'package:bmi_calculator/screens/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../blocks/hieght_slider_block.dart';
 import '../blocks/measurment_container_block.dart';
 import '../blocks/weight_rounded_slider_block.dart';
 import '../enums/enum.dart';
@@ -46,6 +45,7 @@ class WeightScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                         cubit.setweight(0.0);
+                        cubit.setMeasurmentKind(MeasurmentKind.hieght);
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -67,8 +67,10 @@ class WeightScreen extends StatelessWidget {
                         ),
                       ),),
                     ElevatedButton(
-                      onPressed: () {
-
+                      onPressed: ()
+                      {
+                        cubit.calculateBmiValue();
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ResultScreen(),));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.blueAccent,

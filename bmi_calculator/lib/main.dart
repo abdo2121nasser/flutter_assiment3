@@ -1,12 +1,10 @@
 import 'package:bmi_calculator/blocs/bmi_calculator_cubit.dart';
 import 'package:bmi_calculator/screens/gender_screen.dart';
-import 'package:bmi_calculator/screens/hieght_screen.dart';
-import 'package:bmi_calculator/screens/weight_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(BmiCalculator());
+  runApp(const BmiCalculator());
 }
 
 
@@ -20,7 +18,7 @@ class BmiCalculator extends StatelessWidget {
         providers: [
           BlocProvider(create: (context)=>BmiCalculatorCubit())
         ],
-        child: MaterialApp(
+        child: const MaterialApp(
           debugShowCheckedModeBanner: false,
           home: GenderScreen(),
         ),

@@ -29,7 +29,7 @@ class WeightRoundedSliderBlock extends StatelessWidget {
               ),
               onChange: (double value) {
 
-                cubit.setweight((value / 100) * cubit.maxWeight);
+                cubit.setweight(((value / 100) * cubit.maxWeight));
 
               }),
         );

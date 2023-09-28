@@ -1,6 +1,5 @@
 part of 'bmi_calculator_cubit.dart';
 
-@immutable
 abstract class BmiCalculatorState {}
 
 class BmiCalculatorInitial extends BmiCalculatorState {}
@@ -11,5 +10,7 @@ class setWeightState extends BmiCalculatorState {}
 class changeAllHieghtScalesState extends BmiCalculatorState {}
 class changeAllWeightScalesState extends BmiCalculatorState {}
 class setMeasurmentKindState extends BmiCalculatorState {}
-
+class setCorrectMeasurmentState extends BmiCalculatorState {}
+class calculateBmiValueState extends BmiCalculatorState {}
+class getBodyWeightNameState extends BmiCalculatorState {}
 

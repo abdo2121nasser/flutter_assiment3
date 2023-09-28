@@ -1,7 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:bmi_calculator/enums/enum.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:meta/meta.dart';
 
 part 'bmi_calculator_state.dart';
 
@@ -10,6 +8,8 @@ class BmiCalculatorCubit extends Cubit<BmiCalculatorState> {
 static BmiCalculatorCubit get(context)=>BlocProvider.of(context);
   double height=0;
   double weight=0;
+  double? bmiValue;
+  String? bodyWeight;
   HeightScale hieghtScale=HeightScale.cm;
   WeightScale weightScale=WeightScale.pound;
   double maxHieght=200;
@@ -26,7 +26,7 @@ static BmiCalculatorCubit get(context)=>BlocProvider.of(context);
   double getHeight()
   {
     emit(getHeightState());
-   return height!;
+   return height;
   }
   void setweight(double weight)
   {
@@ -37,7 +37,7 @@ static BmiCalculatorCubit get(context)=>BlocProvider.of(context);
   double getweight()
   {
     emit(getWeightState());
-    return weight!;
+    return weight;
   }
   void changeAllHieghtScales(HeightScale scale)
   {
@@ -83,6 +83,42 @@ static BmiCalculatorCubit get(context)=>BlocProvider.of(context);
         textScale2='kg';
       }
     emit(setMeasurmentKindState());
+  }
+  void setCorrectMeasurment()
+  {
+    if(HeightScale.cm==hieghtScale) {
+      changeAllHieghtScales(HeightScale.meter);
+    }
+    if(WeightScale.pound==weightScale) {
+      changeAllWeightScales(WeightScale.kg);
+    }
+    emit(setCorrectMeasurmentState());
+  }
+  double calculateBmiValue()
+  {
+    setCorrectMeasurment();
+    if(weight==0 || height==0) {
+      bmiValue=0.0;
+      return bmiValue!;
+    }
+    bmiValue=weight/(height*height);
+    emit(calculateBmiValueState());
+    return bmiValue!;
+  }
+
+  String getBodyWeightName()
+  {
+    emit(getBodyWeightNameState());
+    if(bmiValue! >=19 && bmiValue!<=24.9) {
+      return 'Normal';
+    } else if(bmiValue! >=25 && bmiValue!<=29.9) {
+      return 'Overweight';
+    } else if(bmiValue!>29.9) {
+      return 'Obese';
+    } else {
+      return 'less weight';
+    }
+
   }
 
 

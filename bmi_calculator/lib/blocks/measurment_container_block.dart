@@ -36,11 +36,13 @@ class MeasurmentBlock extends StatelessWidget {
                       color: Colors.blueAccent
                   ),
                   child: Text(cubit.textScale1,
-                    style: TextStyle(color: Colors.white,fontSize: 15),),
+                    style: const TextStyle(color: Colors.white,fontSize: 15),),
                 ),
                 InkWell(
                   onTap: (){
+
                     cubit.changeAllHieghtScales(HeightScale.meter);
+
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 7),
@@ -65,6 +67,7 @@ class MeasurmentBlock extends StatelessWidget {
                 InkWell(
                   onTap: (){
                     cubit.changeAllHieghtScales(HeightScale.cm);
+
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 18,left: 28),
@@ -112,7 +115,10 @@ class MeasurmentBlock extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: (){
+
                     cubit.changeAllWeightScales(WeightScale.kg);
+
+
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12),
@@ -136,7 +142,10 @@ class MeasurmentBlock extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: (){
+
                     cubit.changeAllWeightScales(WeightScale.pound);
+
+
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(right: 11,left: 15),
